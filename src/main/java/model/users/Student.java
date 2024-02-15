@@ -21,10 +21,10 @@ public class Student extends User {
 
     private void calculateAverage() {
         double sum = 0;
-        for (Integer note : listNotes.notes) {
+        for (Integer note : listNotes.getNotes()) {
             sum += note.doubleValue();
         }
-        average = sum/listNotes.notes.size();
+        average = sum/listNotes.getNotes().size();
     }
 
     @Override

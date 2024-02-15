@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class NotesGenerator {
 
-    Random rand = new Random();
-    public ArrayList<Integer> notes;
+    private Random rand = new Random();
+    private ArrayList<Integer> notes;
 
     public NotesGenerator() {
         notes = generateNotes();
@@ -27,5 +27,21 @@ public class NotesGenerator {
             strb.append(note).append(" ");
         }
         return strb.toString();
+    }
+
+    public Random getRand() {
+        return rand;
+    }
+
+    public void setRand(Random rand) {
+        this.rand = rand;
+    }
+
+    public ArrayList<Integer> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(ArrayList<Integer> notes) {
+        this.notes = notes;
     }
 }
