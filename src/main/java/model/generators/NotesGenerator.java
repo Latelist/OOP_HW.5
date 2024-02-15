@@ -24,7 +24,7 @@ public class NotesGenerator {
     public String toString() {
         StringBuilder strb = new StringBuilder("Оценки: ");
         for (Integer note : notes) {
-            strb.append(note + " ");
+            strb.append(note).append(" ");
         }
         return strb.toString();
     }
