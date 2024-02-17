@@ -5,8 +5,11 @@ import model.users.Teacher;
 import model.users.User;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
+/*
+S — принцип единственной ответственности. Класс отвечает только за формирование группы из преподавателя и списка
+студентов по общему предмету.
+ */
 
 public class StudyGroup implements StudyGroupService{
 

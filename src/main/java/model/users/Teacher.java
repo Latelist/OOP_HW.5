@@ -4,7 +4,7 @@ import model.groups.AllTeachers;
 import model.groups.Group;
 import model.subjects.Subjects;
 
-public class Teacher extends User implements UserService{
+public class Teacher extends User implements UserService {
     private String degree;
     private int teacherId;
 
@@ -12,13 +12,16 @@ public class Teacher extends User implements UserService{
         super(name, age, subject);
         this.degree = degree;
         addToGroup(allTeachers);
+        generateId(allTeachers);
     }
 
     public String getSubjectName() {
         return subject.getRuName();
     }
 
-    public Subjects getSubject() {return subject;}
+    public Subjects getSubject() {
+        return subject;
+    }
 
     public int getTeacherId() {
         return teacherId;
@@ -36,11 +39,15 @@ public class Teacher extends User implements UserService{
 
     @Override
     public void addToGroup(Group group) {
+        group.addUser(this);
+    }
+
+    @Override
+    public void generateId(Group group) {
         if (group.getUsers().isEmpty()) {
             this.teacherId = 0;
         } else {
             this.teacherId = group.getUsers().size();
         }
-        group.addUser(this);
     }
 }

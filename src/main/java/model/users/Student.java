@@ -5,9 +5,7 @@ import model.groups.AllStudents;
 import model.groups.Group;
 import model.subjects.Subjects;
 
-import java.util.ArrayList;
-
-public class Student extends User {
+public class Student extends User implements StudentService {
     private int studentId;
     private double average;
     private NotesGenerator listNotes;
@@ -15,16 +13,27 @@ public class Student extends User {
     public Student(String name, int age, Subjects subject, AllStudents allStudents) {
         super(name, age, subject);
         listNotes = new NotesGenerator();
-        calculateAverage();
+        average = calculateAverage();
         addToGroup(allStudents);
+        generateId(allStudents);
     }
 
-    private void calculateAverage() {
+    @Override
+    public void generateId(Group group) {
+        if (group.getUsers().isEmpty()) {
+            this.studentId = 0;
+        } else {
+            this.studentId = group.getUsers().size();
+        }
+    }
+
+    public double calculateAverage() {
         double sum = 0;
         for (Integer note : listNotes.getNotes()) {
             sum += note.doubleValue();
         }
         average = sum/listNotes.getNotes().size();
+        return average;
     }
 
     @Override
@@ -44,11 +53,6 @@ public class Student extends User {
 
     @Override
     public void addToGroup(Group group) {
-        if (group.getUsers().isEmpty()) {
-            this.studentId = 0;
-        } else {
-            this.studentId = group.getUsers().size();
-        }
         group.addUser(this);
     }
 }

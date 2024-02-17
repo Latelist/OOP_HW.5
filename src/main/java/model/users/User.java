@@ -3,7 +3,13 @@ package model.users;
 import model.groups.Group;
 import model.subjects.Subjects;
 
-public abstract class User {
+/*
+O — принцип открытости/закрытости. Абстрактный класс пользователя — каркас, расширяется наследниками.
+L — принцип подстановки Барбары Лисков. Если подставить наследников в код вместо User, ничего не сломается.
+D — принцип инверсии зависимостей. Конкретные реализации классов — студент и преподаватель — зависят от абстрактного
+класса и взаимодействуют с другими классами через абстракцию.
+ */
+public abstract class User implements UserService{
     protected String name;
     protected int age;
     protected Subjects subject;

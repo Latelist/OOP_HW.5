@@ -3,6 +3,10 @@ package model.generators;
 import java.util.ArrayList;
 import java.util.Random;
 
+/*
+S — принцип единственной ответственности. Класс отвечает только за генерацию оценок.
+ */
+
 public class NotesGenerator {
 
     private Random rand = new Random();

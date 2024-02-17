@@ -6,6 +6,7 @@ import model.groups.StudyGroup;
 import model.subjects.Subjects;
 import model.users.Student;
 import model.users.Teacher;
+import view.TextExpression;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class Controller {
     public void run() {
         AllStudents allStudents = new AllStudents(new ArrayList<Student>());
         AllTeachers allTeachers = new AllTeachers(new ArrayList<Teacher>());
+        TextExpression textExpression = new TextExpression();
         Teacher teacher1 = new Teacher(
                 "Смирнов Никита Владимирович",
                 43,
@@ -45,15 +47,16 @@ public class Controller {
         Student student7 = new Student("Кудрявый Михаил", 18, Subjects.ART, allStudents);
         Student student8 = new Student("Бесцельная Ольга", 18, Subjects.ART, allStudents);
 
-        System.out.println(allStudents);
-        System.out.println(allTeachers);
+        textExpression.groupConsole(allStudents);
+        textExpression.groupConsole(allTeachers);
 
         StudyGroup studyGroup1 = new StudyGroup(teacher1, allStudents.getUsers());
         StudyGroup studyGroup2 = new StudyGroup(teacher2, allStudents.getUsers());
         StudyGroup studyGroup3 = new StudyGroup(teacher3, allStudents.getUsers());
 
-        System.out.println(studyGroup1);
-        System.out.println(studyGroup2);
-        System.out.println(studyGroup3);
+        textExpression.studyGroupConsole(studyGroup1);
+        textExpression.studyGroupConsole(studyGroup2);
+        textExpression.studyGroupConsole(studyGroup3);
+
     }
 }
